@@ -51,6 +51,9 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"flowbite": "^1.8.1"
+		"flowbite": "^1.8.1",
+		"flowbite-svelte": "^0.44.15",
+		"lodash": "^4.17.21",
+		"yup": "^1.2.0"
 	}
 }
