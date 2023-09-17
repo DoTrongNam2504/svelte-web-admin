@@ -20,3 +20,5 @@ export interface RouteItemType {
     render?: any; 
     childrent?: ColumnsTable[];
   }
+  export type TableType = 'default' | 'checkbox';
+  

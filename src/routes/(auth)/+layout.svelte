@@ -4,7 +4,7 @@
 </script>
 
 <NavTop />
-<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900">
+<div class="flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900 ">
 	<SideBar />
 	<slot />
 </div>
