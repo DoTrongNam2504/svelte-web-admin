@@ -56,7 +56,6 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
 		"classnames": "^2.3.2",
-		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.44.15",
 		"flowbite-svelte-icons": "^0.4.4",
 		"lodash": "^4.17.21",

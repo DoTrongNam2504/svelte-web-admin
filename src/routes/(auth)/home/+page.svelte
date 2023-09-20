@@ -1,5 +1,8 @@
 <script lang="ts">
-	import { Select, Label } from 'flowbite-svelte';
+	import { Select, Label, Input, Checkbox, Radio, Textarea } from 'flowbite-svelte';
+	import { Button, Modal } from 'flowbite-svelte';
+	let defaultModal = false;
+
 	let countries = [
 		{ value: '01', name: 'DATA 01' },
 		{ value: '02', name: 'DATA 02' }
@@ -7,7 +10,6 @@
 	import Pagination from '$lib/components/Pagination/Pagination.svelte';
 	import Table from '$lib/components/Table/Table.svelte';
 	import type { ColumnsTable } from '$lib/type.js';
-	import { Button } from 'flowbite-svelte';
 
 	let tableData = [
 		{
@@ -47,6 +49,162 @@
 	];
 	const actions = ['view', 'edit', 'delete'];
 </script>
+
+<!-- ----------------form------------------------- -->
+<Modal
+	title="Thêm mới vật tư, hóa chất "
+	bind:open={defaultModal}
+	autoclose
+	outsideclose
+	class="w-6/12 "
+>
+	<form class=" flex flex-col space-y-6 w-full" action="#">
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2">
+				<span>Mã (HS)</span>
+				<span class="text-red-600">*</span>
+
+				<Input
+					type="text"
+					name="email"
+					placeholder="Nhập vào mã vật tư, hóa chất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-full">
+				<span>Tên vật tư, hóa chất </span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào tên vật tư, hóa chất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2 flex flex-col">
+				<span>Loại</span>
+				<span>
+					<Radio inline name="example" class="mr-2">Vật tư</Radio>
+					<Radio inline name="example" class="ml-2" checked={true}>Hóa chất</Radio>
+				</span>
+			</Label>
+
+			<Label class="space-y-2 w-1/2">
+				<span>Thể loại</span>
+				<Select
+					type="email"
+					name="email"
+					placeholder="Chọn thể loại vật tư, hóa chất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2 flex flex-col">
+				<span>Hãng sản xuất</span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào hãng sản xuất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+
+			<Label class="space-y-2 w-1/2">
+				<span>Nước sản xuất</span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào nước sản xuất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2 flex flex-col">
+				<span>Hãng sản xuất</span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào hãng sản xuất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+
+			<Label class="space-y-2 w-1/2">
+				<span>Nước sản xuất</span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào nước sản xuất"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2 flex flex-col">
+				<span>Đơn vị tính</span>
+				<Select
+					type="email"
+					name="email"
+					placeholder="Chọn đơn vị tính"
+					required
+					class="border w-full"
+				/>
+			</Label>
+
+			<Label class="space-y-2 w-1/2">
+				<span>Giá thành (Nghìn VNĐ) </span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào giá thành"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-full flex flex-col">
+				<span>Quy cách đóng gói</span>
+				<Input
+					type="email"
+					name="email"
+					placeholder="Nhập vào quy cách đóng gói"
+					required
+					class="border w-full"
+				/>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-full flex flex-col">
+				<span>Đặc tính kỹ thuật</span>
+				<Textarea class="border w-full" placeholder="Nhập vào đặc tính kỹ thuật" />
+			</Label>
+		</div>
+	</form>
+	<svelte:fragment slot="footer">
+		<Button on:click={() => alert('Handle "success"')} class="bg-cyan-700">Lưu lại</Button>
+		<Button color="alternative">Hủy bỏ</Button>
+	</svelte:fragment>
+</Modal>;
 
 <div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64">
 	<main>
@@ -96,7 +254,8 @@
 						</Button>
 
 						<Button
-							class=" item-center text-white bg-sky-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5
+							on:click={() => (defaultModal = true)}
+							class="item-center text-white bg-sky-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5
 							 focus:outline-none flex"
 						>
 							Thêm mới
