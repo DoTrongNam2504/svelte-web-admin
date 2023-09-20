@@ -22,7 +22,7 @@
 		{
 			key: 'prop1',
 			dataIndex: 'prop1',
-			title: 'MÃ HS'
+			title: 'MÃ '
 		},
 		{
 			key: 'prop2',
@@ -32,20 +32,16 @@
 		{
 			key: 'prop3',
 			dataIndex: 'prop3',
-			title: 'NHÓM'
+			title: 'LOẠI'
 		},
 		{
 			key: 'prop4',
 			dataIndex: 'prop4',
-			title: 'THỂ LOẠI'
+			title: 'MÔ TẢ '
 		},
-		{
-			key: 'prop5',
-			dataIndex: 'prop5',
-			title: 'GIÁ THÀNH <br/>(VND)'
-		}
+		
 	];
-	const actions = ['view', 'edit', 'delete'];
+	const actions = [ 'edit', 'delete'];
 </script>
 
 <div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64">
@@ -54,47 +50,9 @@
 			<div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm mb-4">
 				<div class="bg-white flex items-center justify-between border-b border-gray-200 pb-4">
 					<h1 class="text-xl font-semibold text-gray-900 sm:text-2xl mb-0">
-						Quản lý danh mục vật tư, hóa chất
+						Quản lý danh mục thể loại
 					</h1>
 					<div class="items-center justify-between flex">
-						<Button color="light" class="mr-2 flex item-center">
-							Đối chiếu VTHC
-							<svg
-								class=" ml-2 w-4 h-4 text-gray-800 dark:text-white"
-								aria-hidden="true"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 20 20"
-							>
-								<path
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-								/>
-							</svg>
-						</Button>
-
-						<Button color="light" class="mr-2 flex item-center  border-solid">
-							<svg
-								class="w-4 h-4 text-gray-800 mr-2"
-								aria-hidden="true"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 18 20"
-							>
-								<path
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M3 8V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 7.828 1h8.239A.969.969 0 0 1 17 2v16a.969.969 0 0 1-.933 1H3.933A.97.97 0 0 1 3 18v-2M8 1v4a1 1 0 0 1-1 1H3m-2 6h10M9.061 9.232 11.828 12l-2.767 2.768"
-								/>
-							</svg>
-							Nhập danh sách
-						</Button>
-
 						<Button
 							class=" item-center text-white bg-sky-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5
 							 focus:outline-none flex"
@@ -125,21 +83,7 @@
 						>
 					</div>
 					<div class="items-center sm:flex">
-						<div class="flex items-center">
-							<Select
-								class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 
-				focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 "
-								items={countries}
-								placeholder="Loại"
-							/>
-
-							<Select
-								class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none 
-				hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5  "
-								items={countries}
-								placeholder="Thể loại"
-							/>
-						</div>
+						
 						<form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
 							<label for="topbar-search" class="sr-only">Tìm kiếm</label>
 							<div class="relative mt-1 lg:w-96">

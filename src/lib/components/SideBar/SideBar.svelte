@@ -17,32 +17,42 @@
 				},
 				{
 					name: 'Danh mục thể loại',
-					path: '/home'
+					path: '/typeCategories'
 				},
 				{
 					name: 'Yêu cầu bổ sung',
-					path: '/home'
+					path: '/addRequest'
+				}
+			]
+		},
+		{
+			hasSubMenu: true,
+			state: 'Home', // các route sẽ nhớ và active lại khi f5: [state,path+name]
+			name: 'Kho vật tư, hóa chất',
+			path: '/home',
+			icon: `<svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 10h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H17M1 10v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M1 10l2-9h12l2 9"/>
+					</svg>`, 
+			sub: [
+				{
+					name: 'Danh sách',
+					path: '/listMaterials'
 				},
 				{
-					name: 'Kiểm tra, đối chiếu',
-					path: '/home'
+					name: 'Danh sách nhập kho',
+					path: '/warehouseHistory'
+				},
+				{
+					name: 'Danh sách xuất kho',
+					path: '/warehouseHistory'
 				}
 			]
 		},
 		{
 			hasSubMenu: false,
 			state: 'Home', // các route sẽ nhớ và active lại khi f5: [state,path+name]
-			name: 'Kho vật tư, hóa chất',
-			path: '/home',
-			icon: `<svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 10h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H17M1 10v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M1 10l2-9h12l2 9"/>
-					</svg>`
-		},
-		{
-			hasSubMenu: false,
-			state: 'Home', // các route sẽ nhớ và active lại khi f5: [state,path+name]
 			name: 'Yêu cầu xuất kho',
-			path: '/home',
+			path: '/requestExport',
 			icon: `<svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
 						<path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
 						<path d="M13.768 15.475a1 1 0 0 1-1.414-1.414L13.414 13H6a1 1 0 0 1 0-2h7.414l-1.06-1.061a1 1 0 1 1 1.414-1.414L16 10.757V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2H14a2 2 0 0 0 2-2v-4.757l-2.232 2.232Z"/>
@@ -65,6 +75,11 @@
 				class="flex-1 px-3 space-y-1 bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
 			>
 				<ul class="pb-2 space-y-2">
+					<li>
+						<a href="/">
+							<img src="/imgs/logo_sidebar.svg" alt="" class="m-auto" />
+						</a>
+					</li>
 					{#each dataRoute as routeItem, i (i)}
 						{#if routeItem.hasSubMenu}
 							<li>
@@ -104,7 +119,7 @@
 						{:else}
 							<li>
 								<a
-									href="https://flowbite-admin-dashboard.vercel.app/"
+									href="{`${routeItem?.path}`}"
 									class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700"
 								>
 									{@html routeItem.icon}
