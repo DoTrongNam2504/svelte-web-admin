@@ -1,9 +1,14 @@
 <script lang="ts">
 	import _ from 'lodash';
 	import type { ColumnsTable } from '$lib/type.ts';
+	import { Button } from 'flowbite-svelte';
 	export let columns: ColumnsTable[] = [];
 	export let tableData: object[] = [];
 	export let actions: string[] = [];
+	export let handleView = (row: object, index?: number) => {};
+	export let handleEdit = (row: object, index?: number) => {};
+	export let handleRemove = (row: object, index?: number) => {};
+
 </script>
 
 <div class="flex flex-col mt-4">
@@ -51,7 +56,7 @@
 											<div class="flex justify-around items-center">
 												{#each actions as action, j (j)}
 												{#if action === "view"}
-												<a href="/">
+												<Button on:click={()=> handleView(row, i)}>
 													<svg
 														class="w-5 h-5  text-blue-600"
 														aria-hidden="true"
@@ -71,10 +76,10 @@
 															/>
 														</g>
 													</svg>
-												</a>
+												</Button >
 												{:else if action ==="edit"}
 												
-												<a href="/">
+												<Button on:click={()=> handleEdit(row, i)} >
 													<svg
 														class="w-5 h-5  mr-2 text-blue-600"
 														fill="currentColor"
@@ -88,9 +93,9 @@
 															clip-rule="evenodd"
 														/></svg
 													>
-												</a>
+												</Button>
 												{:else if action === "delete"}
-												<a href="/">
+												<Button on:click={()=> handleRemove(row, i)} >
 													<svg
 														class="w-5 h-5 mr-2 text-red-500"
 														fill="currentColor"
@@ -102,7 +107,7 @@
 															clip-rule="evenodd"
 														/></svg
 													>
-												</a>
+												</Button>
 												{:else}
 													return ; 
 												{/if}
