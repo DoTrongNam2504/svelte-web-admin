@@ -52,7 +52,7 @@
 	class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
 >
 	<main>
-		<div class="px-4 pt-3 pb-4">
+		<div class="px-4 pt-3 pb-4 relative">
 			<div
 				class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 dark:bg-gray-800 mb-4"
 			>

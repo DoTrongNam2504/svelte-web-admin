@@ -1,58 +1,34 @@
+<script>
+	import { Select, Label } from 'flowbite-svelte';
+	let countries = [
+		{ value: '01', name: 'DATA 01' },
+		{ value: '02', name: 'DATA 02' }
+	];
+</script>
+
 <div class="items-center justify-between lg:flex pt-4">
 	<div class="mb-4 lg:mb-0">
-		<h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white" data-svelte-h="svelte-dpri7b">
-			Danh sách
-		</h3>
-		<span
-			class="text-base font-normal text-gray-500 dark:text-gray-400"
-			data-svelte-h="svelte-1ajblla">Có tất cả 100 bản ghi</span
+		<h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Danh sách</h3>
+		<span class="text-base font-normal text-gray-500 dark:text-gray-400">Có tất cả 100 bản ghi</span
 		>
 	</div>
 	<div class="items-center sm:flex">
 		<div class="flex items-center">
-			<button
-				id="dropdownDefault"
-				data-dropdown-toggle="dropdown"
-				class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-				type="button"
-				>Nhóm
-				<svg
-					class="w-4 h-4 ml-2"
-					aria-hidden="true"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"
-					/></svg
-				>
-			</button>
+			<Select
+				class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 
+				focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 
+				dark:hover:border-gray-600 dark:focus:ring-gray-700"
+				items={countries}
+				placeholder="Loại"
+			/>
 
-			<button
-				id="dropdownDefault"
-				data-dropdown-toggle="dropdown"
-				class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-				type="button"
-				>Thể loại
-				<svg
-					class="w-4 h-4 ml-2"
-					aria-hidden="true"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"
-					/></svg
-				>
-			</button>
+			<Select
+				class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none 
+				hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 
+				dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+				items={countries}
+				placeholder="Thể loại"
+			/>
 		</div>
 		<form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
 			<label for="topbar-search" class="sr-only">Tìm kiếm</label>

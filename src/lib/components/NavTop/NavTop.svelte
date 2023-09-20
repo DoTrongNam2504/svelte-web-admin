@@ -35,11 +35,11 @@
 						/></svg
 					>
 				</button>
-				<a href="https://flowbite-admin-dashboard.vercel.app/" class="flex ml-2 md:mr-24">
+				<a href="/" class="flex ml-2 md:mr-24">
 					<img
 						src="imgs/logo_trang.png"
 						class="h-8 mr-3"
-						alt="FlowBite Logo"
+						alt="OMS LOGO"
 					/>
 					<span
 						class="self-center text-xl font-semibold sm:text-2xl white space-nowrap text-white"
