@@ -5,11 +5,11 @@
 
   $: activeUrl = $page.url.searchParams.get('page');
   let pages = [
-    { name: 1, href: '/components/pagination?page=1' },
-    { name: 2, href: '/components/pagination?page=2' },
-    { name: 3, href: '/components/pagination?page=3' },
-    { name: 4, href: '/components/pagination?page=4' },
-    { name: 5, href: '/components/pagination?page=5' }
+    { name: 6, href: '/components/pagination?page=6' },
+    { name: 7, href: '/components/pagination?page=7' },
+    { name: 8, href: '/components/pagination?page=8' },
+    { name: 9, href: '/components/pagination?page=9' },
+    { name: 10, href: '/components/pagination?page=10' }
   ];
 
   $: {
@@ -35,14 +35,14 @@
   };
 </script>
 
-
-<Pagination {pages} large on:previous={previous} on:next={next} icon class="justify-end flex">
+<Pagination {pages} on:previous={previous} on:next={next} icon class="flex justify-end">
   <svelte:fragment slot="prev">
     <span class="sr-only">Previous</span>
-    <ChevronLeftOutline class="w-3 h-3" />
+    <ChevronLeftOutline class="w-2.5 h-2.5" />
   </svelte:fragment>
   <svelte:fragment slot="next">
     <span class="sr-only">Next</span>
-    <ChevronRightOutline class="w-3 h-3" />
+    <ChevronRightOutline class="w-2.5 h-2.5" />
   </svelte:fragment>
 </Pagination>
+

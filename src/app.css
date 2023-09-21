@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.fixed.top-0.left-0.right-0.h-modal.md\:inset-0.md\:h-full.z-50.w-full.p-4.flex.justify-center.items-center {
+    background: #00000054;
+    height: 100%;
+}
