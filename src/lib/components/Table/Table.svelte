@@ -29,7 +29,7 @@
 							{#if actions.length !== 0}
 								<th
 									scope="col"
-									class="p-4 text-xs font-medium tracking-wider text-center text-gray-500 uppercase dark:text-white"
+									class="p-4 text-xs font-medium tracking-wider text-center text-gray-500 uppercase dark:text-white w-28 outline-none"
 								>
 									Hành động
 								</th>

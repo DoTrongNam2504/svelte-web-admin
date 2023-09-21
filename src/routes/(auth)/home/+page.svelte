@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { Select, Label, Input, Checkbox, Radio, Textarea } from 'flowbite-svelte';
+	import { Select, Label, Input, Checkbox, Radio, Textarea, Fileupload } from 'flowbite-svelte';
 	import ModalConfirm from '$lib/components/ModalConfirm.svelte';
 	import { Button, Modal } from 'flowbite-svelte';
-	let defaultModal = false;
-	let isAddForm:boolean = true;
-	let modalView= false; 
-	let modalDelete= false; 
+	let modalCU = false;
+	let isAddForm: boolean = true;
+	let modalView = false;
+	let modalDelete = false;
+	let modalImport = false;
 	let countries = [
 		{ value: '01', name: 'DATA 01' },
 		{ value: '02', name: 'DATA 02' }
@@ -51,12 +52,28 @@
 		}
 	];
 	const actions = ['view', 'edit', 'delete'];
+	const handleViewRow = (row: any) => {
+		modalView = true;
+	};
+	const handleEditRow = (row: any) => {
+		isAddForm= false; 
+		modalCU = true;
+	};
+	const handleRemove = (row: any) => {
+		modalDelete= true; 
+	};
+
+	let fileuploadprops = {
+    id: 'user_avatar'
+  };
+	
+
 </script>
 
 <!-- ----------------form thêm sửa------------------------- -->
 <Modal
-	title={isAddForm ? 'Thêm mới vật tư, hóa chất ': 'Sửa thông tin vật tư, hóa chất '}
-	bind:open={defaultModal}
+	title={isAddForm ? 'Thêm mới vật tư, hóa chất ' : 'Sửa thông tin vật tư, hóa chất '}
+	bind:open={modalCU}
 	autoclose
 	outsideclose
 	class="w-6/12 "
@@ -209,11 +226,10 @@
 	</svelte:fragment>
 </Modal>
 
-
 <!-- ------------------------modal xem ------------------- -->
 
 <Modal
-	title='Thông tin chi tiết  vật tư, hóa chất '
+	title="Thông tin chi tiết  vật tư, hóa chất "
 	bind:open={modalView}
 	autoclose
 	outsideclose
@@ -222,72 +238,98 @@
 	<form class=" flex flex-col space-y-6 w-full" action="#">
 		<div class="flex flex-row space-x-10 flex-1">
 			<Label class="space-y-2 w-1/2 flex items-center ">
-				<span class= "w-32">Mã (HS) </span>
-				<span class= " !mt-0">: ATN 112</span>
+				<span class="w-32">Mã (HS) </span>
+				<span class=" !mt-0">: ATN 112</span>
 			</Label>
 		</div>
 
 		<div class="flex flex-row space-x-10 flex-1">
 			<Label class="space-y-2 w-full flex items-center">
-				<span class= "w-32">Tên </span>
-				<span class= " !mt-0">: Athernol tuyệt đối</span>
-				
+				<span class="w-32">Tên </span>
+				<span class=" !mt-0">: Athernol tuyệt đối</span>
 			</Label>
 		</div>
 
 		<div class="flex flex-row space-x-10 flex-1">
 			<Label class="space-y-2 w-1/2 flex items-center">
-				<span class= "w-32">Loại </span>
-				<span class= " !mt-0">: Hóa chất</span>
-
+				<span class="w-32">Loại </span>
+				<span class=" !mt-0">: Hóa chất</span>
 			</Label>
 
 			<Label class="space-y-2 w-1/2  flex items-center">
-				<span class= "w-32">Thể loại</span>
-				<span class= " !mt-0">: Hóa chất cơ bản</span>
+				<span class="w-32">Thể loại</span>
+				<span class=" !mt-0">: Hóa chất cơ bản</span>
+			</Label>
+		</div>
+
+		<div class="flex flex-row space-x-10 flex-1">
+			<Label class="space-y-2 w-1/2  flex items-center">
+				<span class="w-32">Xuất xứ</span>
+				<span class=" !mt-0">: Apple-Mỹ </span>
+			</Label>
+			<Label class="space-y-2 w-1/2  flex items-center">
+				<span class="w-32">Đơn vị tính </span>
+				<span class=" !mt-0">: Lít</span>
 			</Label>
 		</div>
 
 		<div class="flex flex-row space-x-10 flex-1">
 			<Label class="space-y-2 w-1/2  flex items-center">
-				<span class= "w-32">Xuất xứ</span>
-				<span class= " !mt-0">: Apple-Mỹ </span>
+				<span class="w-32">Quy cách đóng gói</span>
+				<span class=" !mt-0">: Chai 5 lít </span>
 			</Label>
 			<Label class="space-y-2 w-1/2  flex items-center">
-				<span class= "w-32">Đơn vị tính </span>
-				<span class= " !mt-0">: Lít</span>
-			</Label>
-		</div>
-
-		<div class="flex flex-row space-x-10 flex-1">
-
-			<Label class="space-y-2 w-1/2  flex items-center">
-				<span class= "w-32">Quy cách đóng gói</span>
-				<span class= " !mt-0">: Chai 5 lít </span>
-			</Label>
-			<Label class="space-y-2 w-1/2  flex items-center">
-				<span class= "w-32">Giá thành </span>
-				<span class= " !mt-0">: 1.000.000 (Nghìn VNĐ)</span>
+				<span class="w-32">Giá thành </span>
+				<span class=" !mt-0">: 1.000.000 (Nghìn VNĐ)</span>
 			</Label>
 		</div>
 
 		<div class="flex flex-row space-x-10 flex-1">
 			<Label class="space-y-2 w-full flex items-start">
-				<span class= "w-32">Đặc tính kỹ thuật</span>
-				<span class= "!mt-0 flex-1">: Có mùi đặc trưng, tương tự mùi rượu. Dễ bay hơi . Không màu, không mùi. Tan vô hạn trong nước và một số chất hữu cơ khác. Tỷ trọng: 0.8 g/cm3. 
-				Nhiệt độ hóa rắn: -114.15 độ C. Sôi ở nhiệt độ 78,5oC. Nóng chảy ở  -117,3oC. Có tính hút ẩm mạnh.</span>
+				<span class="w-32">Đặc tính kỹ thuật</span>
+				<span class="!mt-0 flex-1"
+					>: Có mùi đặc trưng, tương tự mùi rượu. Dễ bay hơi . Không màu, không mùi. Tan vô hạn
+					trong nước và một số chất hữu cơ khác. Tỷ trọng: 0.8 g/cm3. Nhiệt độ hóa rắn: -114.15 độ
+					C. Sôi ở nhiệt độ 78,5oC. Nóng chảy ở -117,3oC. Có tính hút ẩm mạnh.</span
+				>
 			</Label>
 		</div>
 	</form>
 	<svelte:fragment slot="footer">
 		<Button color="alternative">Hủy bỏ</Button>
 	</svelte:fragment>
-</Modal>;
+</Modal>
+
+
+<!-- ================= modal nhập danh sách========================== -->
+
+<Modal
+	title="Tải lên danh sách vật tư, hóa chất"
+	bind:open={modalImport}
+	autoclose
+	outsideclose
+	class="w-4/12 "
+>
+	<form class="w-full" action="#">
+			<Label class="space-y-2 w-1/2 flex items-center ">
+				<span class="w-32">Chọn file tải lên  * </span>
+			</Label>
+			<Fileupload {...fileuploadprops} />
+	</form>
+	<svelte:fragment slot="footer">
+		<Button on:click={() => alert('Handle "success"')} class="bg-cyan-700">Lưu lại</Button>
+		<Button color="alternative">Hủy bỏ</Button>
+	</svelte:fragment>
+</Modal>
+
 
 
 <!-- ==== modal deleted============== -->
-<ModalConfirm title= "Bạn có chắc muốn xóa vật tư, hóa chất này ?" isOpen={modalDelete} onCancel={()=> modalDelete = false}  />
-
+<ModalConfirm
+	title="Bạn có chắc muốn xóa vật tư, hóa chất này ?"
+	isOpen={modalDelete}
+	onCancel={() => (modalDelete = false)}
+/>
 
 <div class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64">
 	<main>
@@ -317,7 +359,7 @@
 							</svg>
 						</Button>
 
-						<Button color="light" class="mr-2 flex item-center  border-solid">
+						<Button color="light" class="mr-2 flex item-center  border-solid" on:click={() => (modalImport = true)}>
 							<svg
 								class="w-4 h-4 text-gray-800 mr-2"
 								aria-hidden="true"
@@ -337,7 +379,7 @@
 						</Button>
 
 						<Button
-							on:click={() => (modalDelete = true)}
+							on:click={() => (modalCU = true)}
 							class="item-center text-white bg-sky-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5
 							 focus:outline-none flex"
 						>
@@ -411,7 +453,7 @@
 				</div>
 
 				<!-- Table -->
-				<Table {columns} {tableData} {actions}  />
+				<Table {columns} {tableData} {actions} handleView={(row) => handleViewRow(row)} handleEdit= {(row)=> handleEditRow(row)} handleRemove= {(row)=>handleRemove(row)} />
 			</div>
 			<Pagination />
 		</div>

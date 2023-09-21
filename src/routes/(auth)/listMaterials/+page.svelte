@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { Select, Label } from 'flowbite-svelte';
+	import { Select, Label, Modal } from 'flowbite-svelte';
 	import { Tabs, TabItem } from 'flowbite-svelte';
 	let countries = [
 		{ value: '01', name: 'DATA 01' },
 		{ value: '02', name: 'DATA 02' }
 	];
+	let defaultModal = false;
 	import Pagination from '$lib/components/Pagination/Pagination.svelte';
 	import Table from '$lib/components/Table/Table.svelte';
 	import type { ColumnsTable } from '$lib/type.js';
@@ -113,3 +114,6 @@
 		</div>
 	</main>
 </div>
+
+
+
